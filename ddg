@@ -1,0 +1,14 @@
+#!/bin/bash
+
+## parse the command line input
+parse() {
+    echo $* | tr ' ' '+'
+}
+
+## perform a search with the system default web browser
+search() {
+    xdg-open "https://duckduckgo.com/?q=$1"
+}
+
+QUERY=$(parse $*) 
+search $QUERY
