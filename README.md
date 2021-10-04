@@ -28,7 +28,7 @@ from the terminal! Simply excecute ```ddg``` followed by what you want to
 search for, and let the magic happen.
 
 ### KNOWN ISSUES
-If you are using **firefox** as your default browser, if you run ```ddg```
+If you are using **Firefox** as your default browser, if you run ```ddg```
 before having an instance of the browser already launched, you will encounter an
 error when you close the browser:
 ```bash
