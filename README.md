@@ -31,7 +31,9 @@ search for, and let the magic happen.
 If you are using **firefox** as your default browser, if you run ```ddg```
 before having an instance of the browser already launched, you will encounter an
 error when you close the browser:
-```###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost```
+```bash
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+```
 This does not seem to affect the browsing experience and seems to only be a
 warning from firefox. 
 
