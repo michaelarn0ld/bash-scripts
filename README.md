@@ -27,6 +27,15 @@ ddg is a command line tool that allows you to make DuckDuckGo searches right
 from the terminal! Simply excecute ```ddg``` followed by what you want to
 search for, and let the magic happen.
 
+### KNOWN ISSUES
+If you are using **firefox** as your default browser, if you run ```ddg```
+before launching the browser, you will encounter an error when you close the
+browser:
+```###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost```
+This does not seem to affect the browsing experience and is only replicable
+when you use ```ddg``` and close the browser without opening any other windows
+or tabs.
+
 ### GETTING STARTED
 * Determine the location of bash by running: ```which bash```
 
