@@ -29,12 +29,11 @@ search for, and let the magic happen.
 
 ### KNOWN ISSUES
 If you are using **firefox** as your default browser, if you run ```ddg```
-before launching the browser, you will encounter an error when you close the
-browser:
+before having an instance of the browser already launched, you will encounter an
+error when you close the browser:
 ```###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost```
-This does not seem to affect the browsing experience and is only replicable
-when you use ```ddg``` and close the browser without opening any other windows
-or tabs.
+This does not seem to affect the browsing experience and seems to only be a
+warning from firefox. 
 
 ### GETTING STARTED
 * Determine the location of bash by running: ```which bash```
