@@ -70,8 +70,8 @@ x_edit() {
     fi
 }
 
-## finds all zettels which contain a matching tag
-x_find() {
+## show all zettels which contain a matching tag
+x_show() {
     local tag="#$1"
     local dir="$(x_dir)"
     readarray -t directories <<< "$(x_all)"
@@ -179,7 +179,7 @@ if [[ -n "$1" ]]; then
         create <<zet>>         :    creates a new zettel
         dir                    :    gets session directory 
         edit <<zet_id>>        :    make changes to a zettel & push it
-        find <<zet_tag>        :    finds all zettels that have a matching tag
+        show <<zet_tag>        :    shows all zettels that have a matching tag
         isomin                 :    returns the datetime as YYYYMMDDHHMM (UTC)
         link <<zet_id>>        :    echoes the markdown to link to a zettel
         pull                   :    pulls zettelkasten from gitlab repo

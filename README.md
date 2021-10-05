@@ -151,7 +151,7 @@ zet [OPTION] [COMMAND] [ARGS...]
 |   create [ZETTEL_NAME]     |   creates a new zettel                                         |
 |   dir                      |   prints the session directory                                 |
 |   edit [ZETTEL_ID]         |   edits an already existing zettel                             |
-|   find [ZETTEL_TAG]        |   prints all zettels that have a matching tag                  |
+|   show [ZETTEL_TAG]        |   prints all zettels that have a matching tag                  |
 |   isomin                   |   prints the current UTC datetime (YYYYMMDDHHMM)               |
 |   link [ZETTEL_ID]         |   prints the markdown needed to link to a zettel               |
 |   pull                     |   pulls the zettelkasten from its Git remote repository        |
