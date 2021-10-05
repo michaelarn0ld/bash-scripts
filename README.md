@@ -35,7 +35,8 @@ error when you close the browser:
 ###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 ```
 This does not seem to affect the browsing experience and seems to only be a
-warning from firefox. 
+warning from Firefox. Until this issue is fixed, the errors are
+being redirected to ```/dev/null``` to prevent cluttering the terminal.
 
 ### GETTING STARTED
 * Determine the location of bash by running: ```which bash```
