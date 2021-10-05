@@ -179,13 +179,13 @@ if [[ -n "$1" ]]; then
         create <<zet>>         :    creates a new zettel
         dir                    :    gets session directory 
         edit <<zet_id>>        :    make changes to a zettel & push it
-        show <<zet_tag>        :    shows all zettels that have a matching tag
         isomin                 :    returns the datetime as YYYYMMDDHHMM (UTC)
         link <<zet_id>>        :    echoes the markdown to link to a zettel
         pull                   :    pulls zettelkasten from gitlab repo
         push <<message>>       :    commits zettelkasten to gitlab repo
         read <<zet_id>>        :    prints the contents of a zettel
         register <<zet_tag>>   :    adds a tag to the registry if it's not there 
+        show <<zet_tag>        :    shows all zettels that have a matching tag
         tags <<zet_id>>        :    returns all tags associated with zettel
         topics                 :    returns all tags in the registry
 
