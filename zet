@@ -9,8 +9,8 @@
 # -------------------------------------------------
 
 ZET_EDITOR=$EDITOR
-PUBLIC=$HOME/Public/repos/zettelkasten-public
-PRIVATE=$HOME/Private/repos/zettelkasten-private
+PUBLIC=$ZETDIR
+PRIVATE=$ZETDIR_P
 OPTION=$PUBLIC
 
 
