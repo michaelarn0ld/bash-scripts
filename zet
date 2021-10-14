@@ -10,7 +10,7 @@
 
 ZET_EDITOR=$EDITOR
 PUBLIC=$ZETDIR
-PRIVATE=$ZETDIR_P
+PRIVATE=$ZETDIR_PRIVATE
 OPTION=$PUBLIC
 
 
@@ -94,6 +94,19 @@ x_link() {
     if [[ " ${directories[*]} " =~ " $1 " ]]; then
         link="[$1](../$1) - $(head -1 "$(x_dir)/$1/README.md" | sed 's/^# //')" 
         echo "$link"
+    fi
+}
+
+## post a zettelkasten link to twitter
+x_post() {
+    readarray -t directories <<< "$(x_all)"
+    if [[ " ${directories[*]} " =~ " $1 " ]]; then
+        local zettel post hashtags
+        zettel="$(x_dir)/$1/README.md"
+        post=$(head -1 $zettel | sed 's/^# //')
+        hashtags=$(tail -1 $zettel)
+        url="https://gitlab.com/michaelarn0ld/zettelkasten-public/-/tree/main/$1"
+        tweet "$post" "$hashtags" "$url"
     fi
 }
 
@@ -181,6 +194,7 @@ if [[ -n "$1" ]]; then
         edit <<zet_id>>        :    make changes to a zettel & push it
         isomin                 :    returns the datetime as YYYYMMDDHHMM (UTC)
         link <<zet_id>>        :    echoes the markdown to link to a zettel
+        post                   :    tweets zettelkasten title, tags, link
         pull                   :    pulls zettelkasten from gitlab repo
         push <<message>>       :    commits zettelkasten to gitlab repo
         read <<zet_id>>        :    prints the contents of a zettel

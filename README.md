@@ -155,6 +155,7 @@ zet [OPTION] [COMMAND] [ARGS...]
 |   show [ZETTEL_TAG]        |   prints all zettels that have a matching tag                  |
 |   isomin                   |   prints the current UTC datetime (YYYYMMDDHHMM)               |
 |   link [ZETTEL_ID]         |   prints the markdown needed to link to a zettel               |
+|   post                     |   tweets a zettelkasten title, tags, and url                   |
 |   pull                     |   pulls the zettelkasten from its Git remote repository        |
 |   push [MESSAGE]           |   pushes the local zettelkasten to its Git remote repository   |
 |   read [ZETTEL_ID]         |   prints the contents of a zettel                              |
