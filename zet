@@ -26,6 +26,9 @@ x_all() {
 
 ## creates a new zettel in the session directory & pushes to git repo after wq
 x_create() {
+    if [[ "$#" -lt 1 ]]; then
+        exit 1;
+    fi
     local title="$*"
     local dir readme datetime
     datetime="$(x_isomin)"
@@ -89,6 +92,7 @@ x_show() {
 x_isomin() { date -u +%Y%m%d%H%M ; }
 
 ## echoes the markdown to link a given zettel
+## Easy to get an id  -->  zet link $(zet show foo | grep bar | sed 's/\s.*//')
 x_link() {
     readarray -t directories <<< "$(x_all)"
     if [[ " ${directories[*]} " =~ " $1 " ]]; then
