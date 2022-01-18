@@ -107,7 +107,7 @@ x_show() {
         readarray -t tags <<< "$(tail -1 $dir/$i/README.md | tr ' ' '\n')"
         for j in "${tags[@]}"; do
             if [[ $j == $tag ]]; then
-                echo -ne "$y$i$x - $p$(head -1 "$dir/$i/README.md" | sed 's/^# //')$x\n" 
+                echo -ne "$a$i$x - $y$(head -1 "$dir/$i/README.md" | sed 's/^# //')$x\n" 
             fi
         done
     done 
