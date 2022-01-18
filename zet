@@ -21,7 +21,16 @@ OPTION=$PUBLIC
 ## returns all zettels from the session directory
 x_all() {
     local dir="$(x_dir)"
-    ls $dir | grep -v '.md'
+    for i in $(ls $dir | grep -v '.md'); do
+        local dir="$(x_dir)/$i"
+        readme="$dir/README.md"
+        msg=$(cat "$readme" | head -n 1 | sed 's/^#\s//')
+        tags=$(x_tags $i)
+        year="${i:0:4}"
+        month="${i:4:2}"
+        day="${i:6:2}"
+        echo "$month/$day/$year - $msg"
+    done | less 
 }
 
 ## creates a new zettel in the session directory & pushes to git repo after wq
