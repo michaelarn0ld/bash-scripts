@@ -163,7 +163,7 @@ x_push() {
 x_read() {
     readarray -t directories <<< "$(x_all)"
     if [[ " ${directories[*]} " =~ " $1 " ]]; then
-        cat $(x_dir)/$1/README.md
+        $ZET_EDITOR -R "$(x_dir)/$1/README.md"
     fi
 }
 
