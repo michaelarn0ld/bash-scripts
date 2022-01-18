@@ -13,6 +13,17 @@ PUBLIC=$ZETDIR
 PRIVATE=$ZETDIR_PRIVATE
 OPTION=$PUBLIC
 
+r='\e[31m' # red
+g='\e[32m' # green
+y='\e[33m' # yellow
+b='\e[34m' # blue
+p='\e[35m' # purple
+a='\e[36m' # aqua
+w='\e[37m' # white
+x='\e[0m'  # reset
+z='\e[30m' # black
+
+
 
 # -----------------------------------------
 # ----------- commands for zet ------------
@@ -21,16 +32,7 @@ OPTION=$PUBLIC
 ## returns all zettels from the session directory
 x_all() {
     local dir="$(x_dir)"
-    for i in $(ls $dir | grep -v '.md'); do
-        local dir="$(x_dir)/$i"
-        readme="$dir/README.md"
-        msg=$(cat "$readme" | head -n 1 | sed 's/^#\s//')
-        tags=$(x_tags $i)
-        year="${i:0:4}"
-        month="${i:4:2}"
-        day="${i:6:2}"
-        echo "$month/$day/$year - $msg"
-    done | less 
+    ls $dir | grep -v '.md'
 }
 
 ## creates a new zettel in the session directory & pushes to git repo after wq
@@ -82,8 +84,22 @@ x_edit() {
     fi
 }
 
-## show all zettels which contain a matching tag
+## show all zettels containing a matching tag; --nocolor option to avoid colors
 x_show() {
+    if [[ "$1" == "--nocolor" ]]; then
+        local tag="#$2"
+        local dir="$(x_dir)"
+        readarray -t directories <<< "$(x_all)"
+        for i in "${directories[@]}"; do
+            readarray -t tags <<< "$(tail -1 $dir/$i/README.md | tr ' ' '\n')"
+            for j in "${tags[@]}"; do
+                if [[ $j == $tag ]]; then
+                    echo "$i - $(head -1 "$dir/$i/README.md" | sed 's/^# //')" 
+                fi
+            done
+        done 
+        exit 0
+    fi
     local tag="#$1"
     local dir="$(x_dir)"
     readarray -t directories <<< "$(x_all)"
@@ -91,17 +107,17 @@ x_show() {
         readarray -t tags <<< "$(tail -1 $dir/$i/README.md | tr ' ' '\n')"
         for j in "${tags[@]}"; do
             if [[ $j == $tag ]]; then
-                echo "$i - $(head -1 "$dir/$i/README.md" | sed 's/^# //')" 
+                echo -ne "$y$i$x - $p$(head -1 "$dir/$i/README.md" | sed 's/^# //')$x\n" 
             fi
         done
-    done
+    done 
 }
 
 ## returns the current UTC date time as YYYYMMDDHHMM
 x_isomin() { date -u +%Y%m%d%H%M ; }
 
 ## echoes the markdown to link a given zettel
-## Easy to get an id  -->  zet link $(zet show foo | grep bar | sed 's/\s.*//')
+## Easy to get an id  -->  zet link $(zet show --nocolor foo | grep bar | sed 's/\s.*//')
 x_link() {
     readarray -t directories <<< "$(x_all)"
     if [[ " ${directories[*]} " =~ " $1 " ]]; then
@@ -179,6 +195,21 @@ x_topics() {
     cat $registry
 }
 
+## show all zettels to the user in a friendly format
+x_zk() {
+    local dir="$(x_dir)"
+    for i in $(ls $dir | grep -v '.md'); do
+        local dir="$(x_dir)/$i"
+        readme="$dir/README.md"
+        msg=$(cat "$readme" | head -n 1 | sed 's/^#\s//')
+        tags=$(x_tags $i)
+        year="${i:0:4}"
+        month="${i:4:2}"
+        day="${i:6:2}"
+        echo -ne "$a$month/$day/$year$x - $y$msg$x ($p$i$x)\n"
+    done | less -r 
+}
+
 
 # -----------------------------------------
 # ---- handling command line args ---------
@@ -215,6 +246,7 @@ if [[ -n "$1" ]]; then
         show <<zet_tag>        :    shows all zettels that have a matching tag
         tags <<zet_id>>        :    returns all tags associated with zettel
         topics                 :    returns all tags in the registry
+        zk                     :    show all zettels in friendly format
 
         ------------------------------------------------------------------------
         options:
