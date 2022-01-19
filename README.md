@@ -135,7 +135,7 @@ objectives for the Zettelkasten
 ### CONFIGURATION
 Now that all the prerequisites have been met, you can configure ```zet``` so
 it runs on your machine. Open ```zet``` in a text editor to make changes:
-* Change the interpreter on ```ddg``` to the output of ```which bash```
+* Change the interpreter on ```zet``` to the output of ```which bash```
 * Change ```PUBLIC``` to your local Zettelkasten directory
 * If you want to have a private Zettelkasten, you may do the same thing for
 ```PRIVATE```. If you do not make a private Zettelkasten, please change this
@@ -162,6 +162,8 @@ zet [OPTION] [COMMAND] [ARGS...]
 |   register [ZETTEL_TAG]    |   adds a tag to the registry if it is not there                |
 |   tags [ZETTEL_ID]         |   prints all tags associated with a zettel                     |
 |   topics                   |   prints all tags in the registry                              |
+|   zk                       |   show all zettels in friendly format
+
 ----
 |   Option                   |   Usage                                                        |
 |   :-:                      |   -                                                            |
