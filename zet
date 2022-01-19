@@ -86,22 +86,12 @@ x_edit() {
 
 ## show all zettels containing a matching tag; --nocolor option to avoid colors
 x_show() {
-    if [[ "$1" == "--nocolor" ]]; then
-        local tag="#$2"
-        local dir="$(x_dir)"
-        readarray -t directories <<< "$(x_all)"
-        for i in "${directories[@]}"; do
-            readarray -t tags <<< "$(tail -1 $dir/$i/README.md | tr ' ' '\n')"
-            for j in "${tags[@]}"; do
-                if [[ $j == $tag ]]; then
-                    echo "$i - $(head -1 "$dir/$i/README.md" | sed 's/^# //')" 
-                fi
-            done
-        done 
-        exit 0
-    fi
     local tag="#$1"
     local dir="$(x_dir)"
+    if [[ "$1" == "--nocolor" ]]; then
+        tag="#$2"
+        read -r a y x <<< $(echo "" "" "")
+    fi
     readarray -t directories <<< "$(x_all)"
     for i in "${directories[@]}"; do
         readarray -t tags <<< "$(tail -1 $dir/$i/README.md | tr ' ' '\n')"
@@ -164,6 +154,8 @@ x_read() {
     readarray -t directories <<< "$(x_all)"
     if [[ " ${directories[*]} " =~ " $1 " ]]; then
         $ZET_EDITOR -R "$(x_dir)/$1/README.md"
+        # Another option; pros: safer, cons: annoying (q! instead of q to quit)
+        # $ZET_EDITOR - < "$(x_dir/$1/README.md)"
     fi
 }
 
