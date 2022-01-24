@@ -11,12 +11,14 @@ are accessible by your ```$PATH```.
 # Table of Contents
 ----
 1. [ddg](#ddg)
+1. [reactcomp](#reactcomp)
 1. [webcam](#webcam)
 1. [zet](#zet)
 
 |   Scripts   |   Summary                                                      |
 |   :-:       |   -                                                            |
 |   ddg       |   Performs a DuckDuckGo search from the terminal               |
+|   reactcomp |   Boiler-plate for react functional components
 |   webcam    |   Use a digital camera as a webcam on linux                    |
 |   zet       |   Interacts with a personal [Zettelkasten](https://gitlab.com/michaelarn0ld/zettelkasten-public) |
                                                                          
@@ -49,6 +51,15 @@ being redirected to ```/dev/null``` to prevent cluttering the terminal.
 ddg [ARGS...]
 ```
 
+## reactcomp
+---
+Reactcomp is a tool that takes a single argument and generate the basic
+boiler-plate for a react component.
+
+### USAGE
+```bash
+reactcomp [NAME FOR COMPONENT]
+```
 
 ## webcam
 ----

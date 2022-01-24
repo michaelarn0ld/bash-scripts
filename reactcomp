@@ -1,0 +1,10 @@
+#!/bin/bash
+
+name="$(echo "$1" | sed 's/./\U&/')"
+echo "import React from \"react\";
+
+export default function $name() {
+    return (
+    <div></div>
+    )
+}"
