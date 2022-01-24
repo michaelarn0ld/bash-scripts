@@ -1,10 +1,10 @@
 #!/bin/bash
 
 name="$(echo "$1" | sed 's/./\U&/')"
-echo "import React from \"react\";
-
-export default function $name() {
+import=""
+if [ "$name" == "App" ]; then import="import React from \"react\"\n\n"; fi 
+echo -ne "${import}export default function $name() {
     return (
     <div></div>
     )
-}"
+}\n"
