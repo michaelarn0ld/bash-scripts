@@ -230,7 +230,7 @@ if [[ -n "$1" ]]; then
         edit <<zet_id>>        :    make changes to a zettel & push it
         isomin                 :    returns the datetime as YYYYMMDDHHMM (UTC)
         link <<zet_id>>        :    echoes the markdown to link to a zettel
-        post                   :    tweets zettelkasten title, tags, link
+        post <<zet_id>>>       :    tweets zettelkasten title, tags, link
         pull                   :    pulls zettelkasten from gitlab repo
         push <<message>>       :    commits zettelkasten to gitlab repo
         read <<zet_id>>        :    prints the contents of a zettel
