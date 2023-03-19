@@ -18,6 +18,7 @@ are accessible by your ```$PATH```.
 |   :-:       |   -                                                            |
 |   ddg       |   Performs a DuckDuckGo search from the terminal               |
 |   reactcomp |   Boiler-plate for react functional components                 |
+|   makerepo  |   Make a git repo and push it to my private server
 |   webcam    |   Use a digital camera as a webcam on linux                    |
                                                                          
 
@@ -47,6 +48,16 @@ being redirected to ```/dev/null``` to prevent cluttering the terminal.
 ### USAGE
 ```bash
 ddg [ARGS...]
+```
+
+## makerepo
+---
+Makerepo is a tool that allows you to quickly bootstrap a new git repo and push
+it to the private git server that is available via git.michaelarnold.io.
+
+### USAGE
+```bash
+makerepo [NAME FOR REPO]
 ```
 
 ## reactcomp
