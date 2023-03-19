@@ -15,4 +15,5 @@ git add README.md
 git commit -m "First commit on $1"
 git remote add origin git@$GIT_PUBLIC:$repo
 git push -u origin master
+ssh git@$GIT_PUBLIC touch $repo/git-daemon-export-ok
 cd ..
