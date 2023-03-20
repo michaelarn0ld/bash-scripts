@@ -1,6 +1,6 @@
 #!/bin/bash
 
-repo=/var/www/git/$1.git
+repo=/srv/git/$1.git
 echo "About to make repo on host: $repo"
 ssh git@$GIT_PUBLIC mkdir -p $repo
 ssh git@$GIT_PUBLIC /usr/bin/git --git-dir=$repo init --bare 
