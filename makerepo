@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# BEFORE USING THIS SCRIPT PLEASE MAKE SURE THAT YOUR ENVIRONMENT VARIABLE 
+# GIT_PUBLIC POINTS TO A SERVER WHERE YOU ARE HAVING YOUR GIT REPOSITORIES AND
+# ALSO MAKE SURE THAT YOU HAVE THE PROPER SSH SETUP BETWEEN THE CLIENT AND THAT
+# SERVER
+
+# REFERENCE: https://www.youtube.com/watch?v=ju9loeXNVW0
+# REFERENCE: https://git-scm.com/book/en/v2/Git-on-the-Server-Setting-Up-the-Server
+
+if [ "$GIT_PUBLIC" == "" ];then
+  echo "Cannot run this script without having GIT_PUBLIC set!"
+  exit
+fi
+
 repo=/srv/git/$1.git
 echo "About to make repo on host: $repo"
 ssh git@$GIT_PUBLIC mkdir -p $repo
