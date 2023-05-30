@@ -1,0 +1,24 @@
+#!/bin/bash
+
+ npm init vite $1 -- --template svelte 
+ cd $1
+
+ rm -fr README.md .vscode/ public/ src/assets/ src/lib/ src/vite-env.d.ts src/app.css src/App.svelte
+ grep -v "import './app.css'" src/main.js > src/temp && mv src/temp src/main.js
+ grep -vE "link|title" index.html > temp && mv temp index.html
+ grep -v "//" vite.config.js > temp && mv temp vite.config.js
+ grep -v "//" svelte.config.js > temp && mv temp svelte.config.js
+ grep -vE "^\s+/|^\s+\*" jsconfig.json > temp && mv temp jsconfig.json
+ gsed -i 's/"src.*.d.ts", //g' jsconfig.json
+
+ {
+  echo "<script>"
+  echo "  let count = 0;"
+  echo "  const incrementCount = () => count++;"
+  echo "</script>"
+  echo ""
+  echo "<main>"
+  echo "  <h1>Count is: {count}</h1>"
+  echo "  <button on:click={incrementCount}>Click Me!</button>"
+  echo "</main>"
+} > src/App.svelte
